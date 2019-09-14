@@ -74,6 +74,18 @@ namespace TechnicalExam.ViewModels
         }
         public ICommand GetCharRepeatedCommand { get; set; }
 
+        private string _pIResultText;
+        public string PIResultText
+        {
+            get => _pIResultText;
+            set
+            {
+                SetProperty(ref _pIResultText, value);
+                OnPropertyChanged(nameof(PIResultText));
+            }
+        }
+        public ICommand GetPIValueCommand { get; set; }
+
         public AlgorithmsVM() : this(new LocalDependencyService()) { }
 
         public AlgorithmsVM(IDependecyService depencyService) : base(depencyService)
@@ -85,6 +97,7 @@ namespace TechnicalExam.ViewModels
             GetReverseStringCommand = new Command(async () => await GetReverseStringAsyncAction());
             GetFizzbuzzListCommand = new Command(GetFizzbuzzListAsyncAction);
             GetCharRepeatedCommand = new Command(async () => await GetCharRepeatedAsyncAction());
+            GetPIValueCommand = new Command(GetPIValueAsyncAction);
         }
 
         /// <summary>
@@ -179,6 +192,14 @@ namespace TechnicalExam.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert("Warning", "String A and String B should be distinct", "Ok");
             }
+        }
+
+        /// <summary>
+        /// Compute PI
+        /// </summary>
+        private void GetPIValueAsyncAction()
+        {
+            PIResultText = "PI value: " + Algorithms.ComputePiValue().ToString();
         }
     }
 }

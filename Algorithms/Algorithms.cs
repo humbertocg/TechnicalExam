@@ -105,5 +105,24 @@ namespace Algorithms
             }
             return characterRepeatedList.ToArray();
         }
+
+        /// <summary>
+        /// Compute PI
+        /// </summary>
+        /// <returns></returns>
+        public double ComputePiValue()
+        {
+            int limit = 1000000;
+            int start = 1;
+            double result = 0;
+            for (int iteration = start; iteration <= limit; iteration++)
+            {
+                double numerator = Math.Pow(-1, (iteration + 1));
+                double denominator = (2 * iteration) - 1;
+                result += (numerator / denominator);
+            }
+            result *= 4;
+            return result;
+        }
     }
 }

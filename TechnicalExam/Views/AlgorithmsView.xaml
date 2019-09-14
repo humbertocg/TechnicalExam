@@ -130,6 +130,22 @@
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
+                <!--FizzBuzz list-->
+                <Label Text="Compute PI"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Title"/>
+                    <StackLayout Margin="5" Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding PIResultText}"
+                               HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                <Button Text="Get PI Value"
+                        Command="{Binding GetPIValueCommand}"
+                        HorizontalOptions="FillAndExpand"/>
+                <BoxView HeightRequest="2"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Black"/>
             </StackLayout>
         </ScrollView>
     </local:BaseContentPage.Content>
