@@ -35,6 +35,21 @@ namespace TechnicalExam.ViewModels
         }
         public ICommand GetDiffMinutesCommand { get; set; }
 
+        public string ReverseStringText { get; set; }
+        private string _reverseResultText;
+        public string ReverseResultText
+        {
+            get => _reverseResultText;
+            set
+            {
+                SetProperty(ref _reverseResultText, value);
+                OnPropertyChanged(nameof(ReverseResultText));
+            }
+        }
+        public ICommand GetReverseStringCommand { get; set; }
+
+
+
         public AlgorithmsVM() : this(new LocalDependencyService()) { }
 
         public AlgorithmsVM(IDependecyService depencyService) : base(depencyService)
@@ -43,6 +58,7 @@ namespace TechnicalExam.ViewModels
             EndDate = DateTime.Now.AddDays(1);
             GetCountVowelsCommand = new Command(async () => await GetCountVowelsAsyncAction());
             GetDiffMinutesCommand = new Command(async () => await GetDiffMinutesAsyncAction());
+            GetReverseStringCommand = new Command(async () => await GetReverseStringAsyncAction());
         }
 
         /// <summary>
@@ -76,6 +92,21 @@ namespace TechnicalExam.ViewModels
             }
         }
 
+        /// <summary>
+        /// Perform a reverse for given a string 
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetReverseStringAsyncAction()
+        {
+            if (!string.IsNullOrEmpty(ReverseStringText))
+            {
+                ReverseResultText = string.Format("Reverse string: {0}", Algorithms.GetReverseString(ReverseStringText));
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Warning", "Enter a text before to continue", "Ok");
+            }
+        }
     }
 }
 

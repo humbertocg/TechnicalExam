@@ -34,5 +34,21 @@ namespace Algorithms
                 throw new CoreDateDiffException();
             }
         }
+
+        /// <summary>
+        /// reverse a string
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public string GetReverseString(string text)
+        {
+            char[] charArray = text.ToArray();
+            char[] result = new char[text.Count()];
+            for (int i = (charArray.Length - 1); i >= 0; i--)
+            {
+                result[(charArray.Length - 1) - i] = charArray[i];
+            }
+            return string.Concat(result);
+        }
     }
 }

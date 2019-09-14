@@ -61,6 +61,30 @@
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
+                <!--Reverse String-->
+                <Label Text="Reverse String"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Title"/>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand">
+                    <Label Text="Enter text:"
+                           VerticalOptions="CenterAndExpand"
+                           VerticalTextAlignment="Center"/>
+                    <Entry Text="{Binding ReverseStringText}"
+                           Placeholder="Enter text"
+                           HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <Label Text="{Binding ReverseResultText}"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"/>
+                <Button Text="Reverse String"
+                        Command="{Binding GetReverseStringCommand}"
+                        HorizontalOptions="FillAndExpand"/>
+                <BoxView HeightRequest="2"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Black"/>
             </StackLayout>
         </ScrollView>
     </local:BaseContentPage.Content>
