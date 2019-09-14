@@ -85,6 +85,22 @@
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
+                <!--FizzBuzz list-->
+                <Label Text="FizzBuzz list"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Title"/>
+                    <StackLayout Margin="5" Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding FizzbuzzText}"
+                               HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                <Button Text="Get Fizzbuzz List"
+                        Command="{Binding GetFizzbuzzListCommand}"
+                        HorizontalOptions="FillAndExpand"/>
+                <BoxView HeightRequest="2"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Black"/>
             </StackLayout>
         </ScrollView>
     </local:BaseContentPage.Content>

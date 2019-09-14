@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Algorithms.Exceptions;
 
@@ -49,6 +50,32 @@ namespace Algorithms
                 result[(charArray.Length - 1) - i] = charArray[i];
             }
             return string.Concat(result);
+        }
+
+        /// <summary>
+        /// Get a list of numbers 1 to 200, every number divisible by 3 gets 'fizz',
+        /// every number divisible by 5 gets 'buzz'
+        /// every number divisible by 3 and 5 gets 'fizzbuzz'
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetFizzBuzzList()
+        {
+            List<string> fizzBuzzList = new List<string>();
+            int maxNumber = 200;
+            int index = 1;
+            do
+            {
+                string fizzBuzzString = index.ToString();
+                if (index % 3 == 0)
+                    fizzBuzzString = "fizz";
+                if (index % 5 == 0)
+                    fizzBuzzString = "buzz";
+                if (index % 3 == 0 && index % 5 == 0)
+                    fizzBuzzString = "fizzbuzz";
+                fizzBuzzList.Add(fizzBuzzString);
+                index++;
+            } while (index <= maxNumber);
+            return fizzBuzzList;
         }
     }
 }

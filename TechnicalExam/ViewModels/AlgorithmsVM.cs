@@ -48,7 +48,17 @@ namespace TechnicalExam.ViewModels
         }
         public ICommand GetReverseStringCommand { get; set; }
 
-
+        public string _fizzbuzzText;
+        public string FizzbuzzText
+        {
+            get => _fizzbuzzText;
+            set
+            {
+                SetProperty(ref _fizzbuzzText, value);
+                OnPropertyChanged(nameof(FizzbuzzText));
+            }
+        }
+        public ICommand GetFizzbuzzListCommand { get; set; }
 
         public AlgorithmsVM() : this(new LocalDependencyService()) { }
 
@@ -59,6 +69,7 @@ namespace TechnicalExam.ViewModels
             GetCountVowelsCommand = new Command(async () => await GetCountVowelsAsyncAction());
             GetDiffMinutesCommand = new Command(async () => await GetDiffMinutesAsyncAction());
             GetReverseStringCommand = new Command(async () => await GetReverseStringAsyncAction());
+            GetFizzbuzzListCommand = new Command(GetFizzbuzzListAsyncAction);
         }
 
         /// <summary>
@@ -106,6 +117,27 @@ namespace TechnicalExam.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert("Warning", "Enter a text before to continue", "Ok");
             }
+        }
+
+        /// <summary>
+        /// Get fizzbuzz List
+        /// </summary>
+        /// <returns></returns>
+        private void GetFizzbuzzListAsyncAction()
+        {
+            var fizzbuzzList = Algorithms.GetFizzBuzzList();
+            string listToString = "";
+            int index = 0;
+            foreach(var item in fizzbuzzList)
+            {
+                listToString += item;
+                if(index<fizzbuzzList.Count-1)
+                {
+                    listToString += ", ";
+                }
+                index++;
+            }
+            FizzbuzzText = listToString;
         }
     }
 }
