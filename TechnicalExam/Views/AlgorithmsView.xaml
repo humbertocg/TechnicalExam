@@ -32,6 +32,35 @@
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
+                <!--Difference in minutes between 2 dates-->
+                <Label Text="Difference in minutes between 2 dates"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Title"/>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand">
+                    <Label Text="Start date:"
+                           VerticalOptions="CenterAndExpand"
+                           VerticalTextAlignment="Center"/>
+                    <DatePicker Date="{Binding StartDate}" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand">
+                    <Label Text="End date:"
+                           VerticalOptions="CenterAndExpand"
+                           VerticalTextAlignment="Center"/>
+                    <DatePicker Date="{Binding EndDate}"  HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <Label Text="{Binding DiffMinutesResultText}"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"/>
+                <Button Text="Get Difference"
+                        Command="{Binding GetDiffMinutesCommand}"
+                        HorizontalOptions="FillAndExpand"/>
+                <BoxView HeightRequest="2"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Black"/>
             </StackLayout>
         </ScrollView>
     </local:BaseContentPage.Content>
