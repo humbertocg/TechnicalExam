@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<local:BaseContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local= "clr-namespace:TechnicalExam;assembly=TechnicalExam"
+    x:Class="TechnicalExam.Views.AlgorithmsView">
+    <local:BaseContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+                <!--Count Vowels-->
+                <Label Text="Count Vowels"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Title"/>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand">
+                    <Label Text="Enter text to count vowels:"
+                           VerticalOptions="CenterAndExpand"
+                           VerticalTextAlignment="Center"/>
+                    <Entry Text="{Binding CountVowelsText}"
+                           Placeholder="Enter text"
+                           HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <Label Text="{Binding CountResultText}"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"/>
+                <Button Text="Get Count Vowels"
+                        Command="{Binding GetCountVowelsCommand}"
+                        HorizontalOptions="FillAndExpand"/>
+                <BoxView HeightRequest="2"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Black"/>
+            </StackLayout>
+        </ScrollView>
+    </local:BaseContentPage.Content>
+</local:BaseContentPage>

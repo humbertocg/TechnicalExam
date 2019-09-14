@@ -1,4 +1,6 @@
 ﻿using System;
+using TechnicalExam.Services.Local;
+using TechnicalExam.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +12,9 @@ namespace TechnicalExam
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            IoCContainer.Config();
+
+            MainPage = new NavigationPage( new AlgorithmsView());
         }
 
         protected override void OnStart()
