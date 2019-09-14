@@ -77,5 +77,33 @@ namespace Algorithms
             } while (index <= maxNumber);
             return fizzBuzzList;
         }
+
+        /// <summary>
+        /// Get an array of characters repeated between 2 strings
+        /// </summary>
+        /// <param name="textA"></param>
+        /// <param name="textB"></param>
+        /// <returns></returns>
+        public char[] GetCharacterArrayRepeated(string textA, string textB)
+        {
+            List<char> characterRepeatedList = new List<char>();
+            if (textA != textB)
+            {
+                char[] textee = textA.Distinct().ToArray();
+                char[] textbB = textB.Distinct().ToArray();
+                for (int index1 = 0; index1 < textee.Length; index1++)
+                {
+                    for (int index2 = 0; index2 < textbB.Length; index2++)
+                    {
+                        if (textee[index1] == textbB[index2])
+                        {
+                            characterRepeatedList.Add(textee[index1]);
+                        }
+                    }
+                }
+
+            }
+            return characterRepeatedList.ToArray();
+        }
     }
 }

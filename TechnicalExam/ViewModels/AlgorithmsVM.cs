@@ -60,6 +60,20 @@ namespace TechnicalExam.ViewModels
         }
         public ICommand GetFizzbuzzListCommand { get; set; }
 
+        public string StringA { get; set; }
+        public string StringB { get; set; }
+        private string _charRepeatedText;
+        public string CharRepeatedText
+        {
+            get => _charRepeatedText;
+            set
+            {
+                SetProperty(ref _charRepeatedText, value);
+                OnPropertyChanged(nameof(CharRepeatedText));
+            }
+        }
+        public ICommand GetCharRepeatedCommand { get; set; }
+
         public AlgorithmsVM() : this(new LocalDependencyService()) { }
 
         public AlgorithmsVM(IDependecyService depencyService) : base(depencyService)
@@ -70,6 +84,7 @@ namespace TechnicalExam.ViewModels
             GetDiffMinutesCommand = new Command(async () => await GetDiffMinutesAsyncAction());
             GetReverseStringCommand = new Command(async () => await GetReverseStringAsyncAction());
             GetFizzbuzzListCommand = new Command(GetFizzbuzzListAsyncAction);
+            GetCharRepeatedCommand = new Command(async () => await GetCharRepeatedAsyncAction());
         }
 
         /// <summary>
@@ -138,6 +153,32 @@ namespace TechnicalExam.ViewModels
                 index++;
             }
             FizzbuzzText = listToString;
+        }
+
+        /// <summary>
+        /// Get characters repeated between 2 strings
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetCharRepeatedAsyncAction()
+        {
+            if(string.IsNullOrEmpty(StringA))
+            {
+                await Application.Current.MainPage.DisplayAlert("Warning", "Enter a text in String A before to continue", "Ok");
+                return;
+            }
+            if(string.IsNullOrEmpty(StringB))
+            {
+                await Application.Current.MainPage.DisplayAlert("Warning", "Enter a text in String B before to continue", "Ok");
+                return;
+            }
+            if(StringA != StringB)
+            {
+                CharRepeatedText = "Characters repeated: " + string.Concat(Algorithms.GetCharacterArrayRepeated(StringA, StringB));
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Warning", "String A and String B should be distinct", "Ok");
+            }
         }
     }
 }

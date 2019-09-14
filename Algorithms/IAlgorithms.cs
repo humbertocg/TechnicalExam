@@ -9,5 +9,6 @@ namespace Algorithms
         int GetDiffMinutes(DateTime startDate, DateTime endDate);
         string GetReverseString(string text);
         List<string> GetFizzBuzzList();
+        char[] GetCharacterArrayRepeated(string textA, string textB);
     }
 }
