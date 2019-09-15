@@ -86,18 +86,33 @@ namespace TechnicalExam.ViewModels
         }
         public ICommand GetPIValueCommand { get; set; }
 
+        public string CompressStringText { get; set; }
+        private string _compressResultText;
+        public string CompressResultText
+        {
+            get => _compressResultText;
+            set
+            {
+                SetProperty(ref _compressResultText, value);
+                OnPropertyChanged(nameof(CompressResultText));
+            }
+        }
+        public ICommand GetCompressStringCommand { get; set; }
+
         public AlgorithmsVM() : this(new LocalDependencyService()) { }
 
         public AlgorithmsVM(IDependecyService depencyService) : base(depencyService)
         {
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now.AddDays(1);
+            var dateInitial = DateTime.Now;
+            StartDate = new DateTime(dateInitial.Year, dateInitial.Month, dateInitial.Day, 0, 0, 0);
+            EndDate = StartDate.AddDays(1);
             GetCountVowelsCommand = new Command(async () => await GetCountVowelsAsyncAction());
             GetDiffMinutesCommand = new Command(async () => await GetDiffMinutesAsyncAction());
             GetReverseStringCommand = new Command(async () => await GetReverseStringAsyncAction());
             GetFizzbuzzListCommand = new Command(GetFizzbuzzListAsyncAction);
             GetCharRepeatedCommand = new Command(async () => await GetCharRepeatedAsyncAction());
             GetPIValueCommand = new Command(GetPIValueAsyncAction);
+            GetCompressStringCommand = new Command(async () => await GetCompressStringAsyncAction());
         }
 
         /// <summary>
@@ -200,6 +215,22 @@ namespace TechnicalExam.ViewModels
         private void GetPIValueAsyncAction()
         {
             PIResultText = "PI value: " + Algorithms.ComputePiValue().ToString();
+        }
+
+        /// <summary>
+        /// Get a compressed version of a string
+        /// </summary>
+        /// <returns></returns>
+        private async Task GetCompressStringAsyncAction()
+        {
+            if (!string.IsNullOrEmpty(CompressStringText))
+            {
+                CompressResultText = string.Format("String compressed: {0}", Algorithms.CompressString(CompressStringText));
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Warning", "Enter a text before to continue", "Ok");
+            }
         }
     }
 }

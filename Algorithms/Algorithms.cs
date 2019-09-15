@@ -124,5 +124,30 @@ namespace Algorithms
             result *= 4;
             return result;
         }
+
+        /// <summary>
+        /// Compress an string. e.g "aabcccccaaa" would become "a2b1c5a3"
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public string CompressString(string text)
+        {
+            char[] charArray = text.ToArray();
+            int count = 1;
+            string output = "";
+            for (int index = 0; index < charArray.Length; index++)// c in charArray)
+            {
+                if (index < charArray.Length - 1 && charArray[index] == charArray[index + 1])
+                {
+                    count++;
+                }
+                else
+                {
+                    output += $"{charArray[index]}{count}";
+                    count = 1;
+                }
+            }
+            return output.Count() < text.Count() ? output : text;
+        }
     }
 }

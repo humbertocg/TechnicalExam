@@ -11,5 +11,6 @@ namespace Algorithms
         List<string> GetFizzBuzzList();
         char[] GetCharacterArrayRepeated(string textA, string textB);
         double ComputePiValue();
+        string CompressString(string text);
     }
 }

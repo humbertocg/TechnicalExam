@@ -3,7 +3,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local= "clr-namespace:TechnicalExam;assembly=TechnicalExam"
-    x:Class="TechnicalExam.Views.AlgorithmsView">
+    x:Class="TechnicalExam.Views.AlgorithmsView"
+    Title="Algorithms">
     <local:BaseContentPage.Content>
         <ScrollView>
             <StackLayout HorizontalOptions="FillAndExpand"
@@ -146,6 +147,27 @@
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
+                <!--Compress String-->
+                <Label Text="Compress A String"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Title"/>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="FillAndExpand">
+                    <Label Text="Enter text to compress:"
+                           VerticalOptions="CenterAndExpand"
+                           VerticalTextAlignment="Center"/>
+                    <Entry Text="{Binding CompressStringText}"
+                           Placeholder="Enter text"
+                           HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <Label Text="{Binding CompressResultText}"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"/>
+                <Button Text="Get String Compressed"
+                        Command="{Binding GetCompressStringCommand}"
+                        HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </ScrollView>
     </local:BaseContentPage.Content>
