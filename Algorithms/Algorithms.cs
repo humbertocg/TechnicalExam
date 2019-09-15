@@ -89,15 +89,15 @@ namespace Algorithms
             List<char> characterRepeatedList = new List<char>();
             if (textA != textB)
             {
-                char[] textee = textA.Distinct().ToArray();
-                char[] textbB = textB.Distinct().ToArray();
-                for (int index1 = 0; index1 < textee.Length; index1++)
+                char[] textADistinct = textA.Distinct().ToArray();
+                char[] textBDistinct = textB.Distinct().ToArray();
+                for (int index1 = 0; index1 < textADistinct.Length; index1++)
                 {
-                    for (int index2 = 0; index2 < textbB.Length; index2++)
+                    for (int index2 = 0; index2 < textBDistinct.Length; index2++)
                     {
-                        if (textee[index1] == textbB[index2])
+                        if (textADistinct[index1] == textBDistinct[index2])
                         {
-                            characterRepeatedList.Add(textee[index1]);
+                            characterRepeatedList.Add(textADistinct[index1]);
                         }
                     }
                 }
