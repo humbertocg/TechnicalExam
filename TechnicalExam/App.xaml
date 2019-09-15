@@ -6,6 +6,20 @@
              mc:Ignorable="d"
              x:Class="TechnicalExam.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ButtonEnabledColor">#1ea055</Color>
+            <Color x:Key="ButtoDisabledColor">#6a726d</Color>
 
+            <Style x:Key="ButtonEnabledStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonEnabledColor}" />
+            </Style>
+
+            <Style x:Key="ButtonDisabledStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtoDisabledColor}" />
+            </Style>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

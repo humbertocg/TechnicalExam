@@ -23,5 +23,6 @@
     <Folder Include="Services\Local\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
 </Project>

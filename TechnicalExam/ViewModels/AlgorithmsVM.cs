@@ -8,7 +8,17 @@ namespace TechnicalExam.ViewModels
 {
     public class AlgorithmsVM : BaseViewModel
     {
-        public string CountVowelsText { get; set; }
+        //Count Vowels
+        private string _countVowelsText;
+        public string CountVowelsText
+        {
+            get => _countVowelsText;
+            set
+            {
+                SetProperty(ref _countVowelsText, value);
+                OnPropertyChanged(nameof(IsEnabledCountVowels));
+            }
+        }
         private string _countResultText;
         public string CountResultText
         {
@@ -20,9 +30,29 @@ namespace TechnicalExam.ViewModels
             }
         }
         public ICommand GetCountVowelsCommand { get; set; }
+        public bool IsEnabledCountVowels => !string.IsNullOrEmpty(CountVowelsText);
 
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        //Diff Dates
+        private DateTime _startDate;
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set
+            {
+                SetProperty(ref _startDate, value);
+                OnPropertyChanged(nameof(IsEnabledDiffMinutes));
+            }
+        }
+        private DateTime _endDate;
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set
+            {
+                SetProperty(ref _endDate, value);
+                OnPropertyChanged(nameof(IsEnabledDiffMinutes));
+            }
+        }
         private string _diffMinutesResultText;
         public string DiffMinutesResultText
         {
@@ -34,8 +64,19 @@ namespace TechnicalExam.ViewModels
             }
         }
         public ICommand GetDiffMinutesCommand { get; set; }
+        public bool IsEnabledDiffMinutes => StartDate < EndDate;
 
-        public string ReverseStringText { get; set; }
+        //Reverse string
+        public string _reverseStringText;
+        public string ReverseStringText
+        {
+            get => _reverseStringText;
+            set
+            {
+                SetProperty(ref _reverseStringText, value);
+                OnPropertyChanged(nameof(IsEnabledReverseString));
+            }
+        }
         private string _reverseResultText;
         public string ReverseResultText
         {
@@ -47,7 +88,9 @@ namespace TechnicalExam.ViewModels
             }
         }
         public ICommand GetReverseStringCommand { get; set; }
+        public bool IsEnabledReverseString => !string.IsNullOrEmpty(ReverseStringText);
 
+        //fizzbuzz List
         public string _fizzbuzzText;
         public string FizzbuzzText
         {
@@ -60,8 +103,27 @@ namespace TechnicalExam.ViewModels
         }
         public ICommand GetFizzbuzzListCommand { get; set; }
 
-        public string StringA { get; set; }
-        public string StringB { get; set; }
+        //characters repeated
+        private string _stringA;
+        public string StringA
+        {
+            get => _stringA;
+            set
+            {
+                SetProperty(ref _stringA, value);
+                OnPropertyChanged(nameof(IsEnabledCharRepeated));
+            }
+        }
+        private string _stringB;
+        public string StringB
+        {
+            get => _stringB;
+            set
+            {
+                SetProperty(ref _stringB, value);
+                OnPropertyChanged(nameof(IsEnabledCharRepeated));
+            }
+        }
         private string _charRepeatedText;
         public string CharRepeatedText
         {
@@ -73,7 +135,9 @@ namespace TechnicalExam.ViewModels
             }
         }
         public ICommand GetCharRepeatedCommand { get; set; }
+        public bool IsEnabledCharRepeated => !string.IsNullOrEmpty(StringA) && !string.IsNullOrEmpty(StringB);
 
+        //Compute PI value
         private string _pIResultText;
         public string PIResultText
         {
@@ -86,7 +150,17 @@ namespace TechnicalExam.ViewModels
         }
         public ICommand GetPIValueCommand { get; set; }
 
-        public string CompressStringText { get; set; }
+        //Compress String
+        private string _compressStringText;
+        public string CompressStringText
+        {
+            get => _compressStringText;
+            set
+            {
+                SetProperty(ref _compressStringText, value);
+                OnPropertyChanged(nameof(IsEnabledCompressString));
+            }
+        }
         private string _compressResultText;
         public string CompressResultText
         {
@@ -98,6 +172,7 @@ namespace TechnicalExam.ViewModels
             }
         }
         public ICommand GetCompressStringCommand { get; set; }
+        public bool IsEnabledCompressString => !string.IsNullOrEmpty(CompressStringText);
 
         public AlgorithmsVM() : this(new LocalDependencyService()) { }
 

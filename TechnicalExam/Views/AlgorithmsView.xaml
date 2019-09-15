@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local= "clr-namespace:TechnicalExam;assembly=TechnicalExam"
+    xmlns:renderers= "clr-namespace:TechnicalExam.Renderers;assembly=TechnicalExam"
     x:Class="TechnicalExam.Views.AlgorithmsView"
     Title="Algorithms">
     <local:BaseContentPage.Content>
@@ -27,9 +28,23 @@
                        HorizontalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"/>
-                <Button Text="Get Count Vowels"
+                <renderers:ExtendedButton Text="Get Count Vowels"
                         Command="{Binding GetCountVowelsCommand}"
-                        HorizontalOptions="FillAndExpand"/>
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabledCountVowels}">
+                    <renderers:ExtendedButton.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledCountVowels}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource ButtonEnabledStyle}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledCountVowels}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource ButtonDisabledStyle}" />
+                        </DataTrigger>
+                    </renderers:ExtendedButton.Triggers>
+                </renderers:ExtendedButton>
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
@@ -56,9 +71,24 @@
                        HorizontalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"/>
-                <Button Text="Get Difference"
+                <renderers:ExtendedButton Text="Get Difference"
                         Command="{Binding GetDiffMinutesCommand}"
-                        HorizontalOptions="FillAndExpand"/>
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource ButtonEnabledStyle}"
+                        IsEnabled="{Binding IsEnabledDiffMinutes}">
+                    <renderers:ExtendedButton.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledDiffMinutes}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource ButtonEnabledStyle}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledDiffMinutes}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource ButtonDisabledStyle}" />
+                        </DataTrigger>
+                    </renderers:ExtendedButton.Triggers>
+                </renderers:ExtendedButton>
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
@@ -80,9 +110,23 @@
                        HorizontalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"/>
-                <Button Text="Reverse String"
+                <renderers:ExtendedButton Text="Reverse String"
                         Command="{Binding GetReverseStringCommand}"
-                        HorizontalOptions="FillAndExpand"/>
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabledReverseString}">
+                    <renderers:ExtendedButton.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledReverseString}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource ButtonEnabledStyle}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledReverseString}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource ButtonDisabledStyle}" />
+                        </DataTrigger>
+                    </renderers:ExtendedButton.Triggers>
+                </renderers:ExtendedButton>
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
@@ -98,6 +142,7 @@
                     </StackLayout>
                 <Button Text="Get Fizzbuzz List"
                         Command="{Binding GetFizzbuzzListCommand}"
+                        Style="{StaticResource ButtonEnabledStyle}"
                         HorizontalOptions="FillAndExpand"/>
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
@@ -125,13 +170,27 @@
                        HorizontalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"/>
-                <Button Text="Get characteres repeated"
+                <renderers:ExtendedButton Text="Get characteres repeated"
                         Command="{Binding GetCharRepeatedCommand}"
-                        HorizontalOptions="FillAndExpand"/>
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabledCharRepeated}">
+                    <renderers:ExtendedButton.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledCharRepeated}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource ButtonEnabledStyle}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledCharRepeated}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource ButtonDisabledStyle}" />
+                        </DataTrigger>
+                    </renderers:ExtendedButton.Triggers>
+                </renderers:ExtendedButton>
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
-                <!--FizzBuzz list-->
+                <!--Compute PI value-->
                 <Label Text="Compute PI"
                        HorizontalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
@@ -143,7 +202,8 @@
                     </StackLayout>
                 <Button Text="Get PI Value"
                         Command="{Binding GetPIValueCommand}"
-                        HorizontalOptions="FillAndExpand"/>
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource ButtonEnabledStyle}"/>
                 <BoxView HeightRequest="2"
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
@@ -165,9 +225,23 @@
                        HorizontalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"/>
-                <Button Text="Get String Compressed"
+                <renderers:ExtendedButton Text="Get String Compressed"
                         Command="{Binding GetCompressStringCommand}"
-                        HorizontalOptions="FillAndExpand"/>
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabledCompressString}">
+                    <renderers:ExtendedButton.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledCompressString}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource ButtonEnabledStyle}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding IsEnabledCompressString}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource ButtonDisabledStyle}" />
+                        </DataTrigger>
+                    </renderers:ExtendedButton.Triggers>
+                </renderers:ExtendedButton>
             </StackLayout>
         </ScrollView>
     </local:BaseContentPage.Content>
