@@ -11,9 +11,10 @@
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand">
                 <!--Count Vowels-->
-                <Label Text="Count Vowels"
+                <renderers:ExtendedLabelAnimated Text="Count Vowelsfjfhjfhjfjfjffjhffjfjhfjhfhjfjhfjfjhfjfjfjfjhfjhfhjfjfjfjhfjhfjfjfjhfjfjhfjhfjfjhfhjfhjfhjfhjfhjvnvnvnvuyfiufkuhfhcgjdthhgxgncjyfkufk,f,vbku"
                        HorizontalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
+                       MaxLines="1"
                        FontSize="Title"/>
                 <StackLayout Orientation="Horizontal"
                              HorizontalOptions="FillAndExpand">
@@ -49,7 +50,7 @@
                          HorizontalOptions="FillAndExpand"
                          BackgroundColor="Black"/>
                 <!--Difference in minutes between 2 dates-->
-                <Label Text="Difference in minutes between 2 dates"
+                <renderers:ExtendedLabelAnimated Text="Difference in minutes between 2 dates rgrwegwegwgwergwergwegwerwgrwegwe"
                        HorizontalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
                        FontSize="Title"/>
@@ -74,7 +75,6 @@
                 <renderers:ExtendedButton Text="Get Difference"
                         Command="{Binding GetDiffMinutesCommand}"
                         HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource ButtonEnabledStyle}"
                         IsEnabled="{Binding IsEnabledDiffMinutes}">
                     <renderers:ExtendedButton.Triggers>
                         <DataTrigger TargetType="Button"
